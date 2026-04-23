@@ -5,6 +5,7 @@ import SearchBar from "../../../Components/searchBar";
 import { FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa";
 import ModalEtablissement from "./modalEtablissement";
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
+import { getFullImageUrl } from "../../../utils/imageHelper";
 
 const AllEtablissement = () => {
     const { data, page, setPage, searchTerm, setSearchTerm, totalPages } = UseFetchAllData("get_all_establishment", "search_establishment", 6)
@@ -58,7 +59,7 @@ const AllEtablissement = () => {
                             className="anim-item bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 w-80 flex flex-col opacity-0 overflow-hidden"
                         >
                             <img
-                                src={`http://localhost:8000${etablissement.entity.image.image}`}
+                                src={getFullImageUrl(etablissement.entity.image.image)}
                                 alt={etablissement.name}
                                 className="h-44 w-full object-cover"
                             />

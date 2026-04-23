@@ -4,6 +4,7 @@ import { FiChevronsLeft, FiChevronsRight, FiSearch } from "react-icons/fi";
 import { FaCalendar, FaLink } from "react-icons/fa";
 import SearchBar from "../../Components/searchBar";
 import UseFetchAllData from "../../hooks/useFetchAllData";
+import { getFullImageUrl } from "../../utils/imageHelper";
 
 const AllActuality = () => {
   const {data, page, setPage, searchTerm, setSearchTerm, totalPages} = UseFetchAllData("list_actualities", "search_actualities", 6)
@@ -71,7 +72,7 @@ const AllActuality = () => {
             >
               {/* IMAGE */}
               <img
-                src={`http://localhost:8000${actuality.image_news.image}`}
+                src={getFullImageUrl(actuality.image_news.image)}
                 alt={actuality.title}
                 className="h-48 w-full object-cover"
               />

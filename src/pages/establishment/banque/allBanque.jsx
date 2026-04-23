@@ -5,6 +5,7 @@ import ModalBanque from "./modalBanque";
 import Establishment from "../establishment";
 import SearchBar from "../../../Components/searchBar";
 import UseFetchAllData from "../../../hooks/useFetchAllData";
+import { getFullImageUrl } from "../../../utils/imageHelper";
 
 const AllBanque = () => {
     const {data, page, setPage, searchTerm, setSearchTerm, totalPages } = UseFetchAllData("get_all_bank", "search_bank", 6)
@@ -57,7 +58,7 @@ const AllBanque = () => {
                             className="anim-item bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 w-80 flex flex-col opacity-0 overflow-hidden"
                         >
                             <img
-                                src={`http://localhost:8000${banque.entity.image.image}`}
+                                src={getFullImageUrl(banque.entity.image.image)}
                                 alt={banque.name}
                                 className="h-44 w-full object-cover"
                             />

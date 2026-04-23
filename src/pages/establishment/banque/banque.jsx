@@ -4,6 +4,7 @@ import ModalBanque from "./modalBanque";
 import { NavLink } from "react-router-dom";
 import Establishment from "../establishment";
 import UseFetchData from "../../../hooks/useFetchData";
+import { getFullImageUrl } from "../../../utils/imageHelper";
 
 const Banque = () => {
     // Note: data doit contenir assez d'éléments pour le scroll (ou être doublé)
@@ -57,7 +58,7 @@ const Banque = () => {
                                 {/* LA CARTE : Animation de levée au survol */}
                                 <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                                     <img
-                                        src={`http://localhost:8000${banque.entity.image.image}`}
+                                        src={getFullImageUrl(banque.entity.image.image)}
                                         alt={banque.name}
                                         className="h-44 w-full object-cover"
                                     />

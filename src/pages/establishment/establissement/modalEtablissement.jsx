@@ -1,6 +1,7 @@
 import React from "react";
 import UseFetchDataById from "../../../hooks/useFetchDataById";
 import { FaBuilding, FaCalendar, FaClock, FaConciergeBell, FaLandmark, FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa";
+import { getFullImageUrl } from "../../../utils/imageHelper";
 
 const ModalEtablissement = ({ isOpen, onClose, etablissement }) => {
     if (!isOpen) return null;
@@ -34,7 +35,7 @@ const ModalEtablissement = ({ isOpen, onClose, etablissement }) => {
                         <span className="text-[10px] font-bold text-gray-400 upparcase tracking-[0.2em] mb-6">Responsable</span>
 
                         {data?.entity.owner.image_owner.image ? (
-                            <img src={`http://localhost:8000${data.entity.owner.image_owner.image}`}
+                            <img src={getFullImageUrl(data.entity.owner.image_owner.image)}
                                 className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-md border-4 border-white ring-1 ring-gray-200 mb-4"
                                 alt="" />
                         ) : (
@@ -94,7 +95,7 @@ const ModalEtablissement = ({ isOpen, onClose, etablissement }) => {
                         <div className="bg-gray-100 rounded-2xl p-6 mb-8 flex justify-center items-center shadow-inner min-h-[220px]">
                             {data?.entity.image.image ? (
                                 <img
-                                src={`http://localhost:8000${data.entity.image.image}`}
+                                src={getFullImageUrl(data.entity.image.image)}
                                 className="max-h-52 w-auto object-contain rounded-lg shadow-sm "
                                 />
                             ) : (

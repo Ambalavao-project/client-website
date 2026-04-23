@@ -3,6 +3,7 @@ import UseFetchData from "../../../hooks/useFetchData"
 import { FaBuilding, FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa"
 import ModalEtablissement from "./modalEtablissement"
 import { NavLink } from "react-router-dom"
+import { getFullImageUrl } from "../../../utils/imageHelper"
 
 const Etablissement = () => {
     const { data } = UseFetchData("get_all_establishment", 1, 6)
@@ -45,7 +46,7 @@ const Etablissement = () => {
                             <div key={`${establishment.establishment_id}-${index}`} className="w-[280px] shrink-0">
                                 <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                                     <img
-                                        src={`http://localhost:8000${establishment.entity.image.image}`}
+                                        src={getFullImageUrl(establishment.entity.image.image)}
                                         alt={establishment.name}
                                         className="h-44 w-full object-cover"
                                     />

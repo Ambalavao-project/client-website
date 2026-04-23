@@ -3,7 +3,7 @@ import Home from "./home/home";
 import Actuality from "./actuality/actuality";
 import Banque from "./establishment/banque/banque";
 import Etablissement from "./establishment/establissement/etablissement";
-import Hotel from "./hotel/hotel";
+import Hotel from "./establishment/hotel/hotel";
 
 const Website = () => {
   return (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApiService from "../../service/apiService";
+import { getFullImageUrl } from "../../utils/imageHelper";
 
 const ModalActuality = ({ isOpen, onClose, actuality }) => {
   if (!isOpen) return null;
@@ -39,7 +40,7 @@ const ModalActuality = ({ isOpen, onClose, actuality }) => {
           {actualities?.image_news?.image && (
             <div className="bg-gray-100 rounded-lg overflow-hidden mb-4 shadow-md">
               <img
-              src={`http://localhost:8000${actualities.image_news.image}`}
+              src={getFullImageUrl(actualities.image_news.image)}
               alt={actualities.title}
               className="w-full h-auto max-h-[400px] object-contain opacity-0 animate-fade-in-up delay-200"
             />

@@ -1,4 +1,4 @@
-import UseFetchDataById from "../../hooks/useFetchDataById"
+import UseFetchDataById from "../../../hooks/useFetchDataById"
 
 const ModalHotel = ({ isOpen, onClose, hotel }) => {
     if (!isOpen) return null

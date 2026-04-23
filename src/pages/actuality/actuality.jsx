@@ -3,6 +3,7 @@ import { FaCalendar, FaGlobe, FaLink } from "react-icons/fa";
 import ModalActuality from "./modalActuality";
 import { NavLink } from "react-router-dom";
 import UseFetchData from "../../hooks/useFetchData";
+import { getFullImageUrl } from "../../utils/imageHelper";
 
 const Actuality = () => {
   const {data} = UseFetchData("list_actualities", 1, 3)
@@ -62,7 +63,7 @@ const Actuality = () => {
             className="anim-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 w-80 flex flex-col opacity-0"
           >
             <img
-              src={`http://localhost:8000${actuality.image_news.image}`}
+              src={getFullImageUrl(actuality.image_news.image)}
               alt={actuality.title}
               className="h-48 w-full object-cover"
             />

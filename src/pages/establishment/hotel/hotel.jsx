@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import UseFetchData from "../../hooks/useFetchData";
 import { FaBed, FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa";
 import ModalHotel from "./modalHotel";
+import UseFetchData from "../../../hooks/useFetchData";
 
 const Hotel = () => {
     const { data } = UseFetchData("get_all_hotel", 1, 6)
