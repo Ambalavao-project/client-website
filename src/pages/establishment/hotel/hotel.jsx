@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaBed, FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa";
 import ModalHotel from "./modalHotel";
 import UseFetchData from "../../../hooks/useFetchData";
+import { getFullImageUrl } from "../../../utils/imageHelper";
 
 const Hotel = () => {
     const { data } = UseFetchData("get_all_hotel", 1, 6)
@@ -44,7 +45,7 @@ const Hotel = () => {
                             <div key={`${hotel.hotel_id}-${index}`} className="w-[280px] shrink-0">
                                 <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                                     <img
-                                        src={`http://localhost:8000${hotel.entity.image.image}`}
+                                        src={getFullImageUrl(hotel.entity.image.image)}
                                         alt={hotel.name}
                                         className="h-44 w-full object-cover rounded-2xl"
                                     />
