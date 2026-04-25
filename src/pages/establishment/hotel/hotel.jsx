@@ -3,6 +3,7 @@ import { FaBed, FaMapMarkerAlt, FaPhone, FaUser } from "react-icons/fa";
 import ModalHotel from "./modalHotel";
 import UseFetchData from "../../../hooks/useFetchData";
 import { getFullImageUrl } from "../../../utils/imageHelper";
+import { NavLink } from "react-router-dom";
 
 const Hotel = () => {
     const { data } = UseFetchData("get_all_hotel", 1, 6)
@@ -43,11 +44,11 @@ const Hotel = () => {
                     <div className="animate-scroll-infinite flex gap-6 py-4">
                         {[...data, ...data].map((hotel, index) => (
                             <div key={`${hotel.hotel_id}-${index}`} className="w-[280px] shrink-0">
-                                <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
+                                <div className="bg-white  border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                                     <img
                                         src={getFullImageUrl(hotel.entity.image.image)}
                                         alt={hotel.name}
-                                        className="h-44 w-full object-cover rounded-2xl"
+                                        className="h-44 w-full object-cover "
                                     />
 
                                     <div className="p-5 flex flex-col flex-1">
@@ -105,9 +106,9 @@ const Hotel = () => {
             </div>
 
             <div className="flex justify-center mt-20 opacity-0 anim-item" data-index={3}>
-                <button className="bg-pink-600 text-white px-6 py-3 rounded-full shadow hover:bg-pink-700 transition-all flex items-center gap-2 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
+                <NavLink to={'/all_hotel'} className="bg-pink-600 text-white px-6 py-3 rounded-full shadow hover:bg-pink-700 transition-all flex items-center gap-2 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                     <FaBed size={20} /> Voir Plus d'hôtel
-                </button>
+                </NavLink>
             </div>
 
             <ModalHotel

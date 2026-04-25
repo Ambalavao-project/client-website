@@ -6,6 +6,7 @@ import Website from './pages/website'
 import AllActuality from './pages/actuality/allActuality'
 import AllBanque from './pages/establishment/banque/allBanque'
 import AllEtablissement from './pages/establishment/establissement/allEtablissement'
+import AllHotel from './pages/establishment/hotel/allHotel'
 
 // Petit composant interne pour gérer le scroll auto vers les #ID
 const ScrollHandler = () => {
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='all_actuality' element={<AllActuality/>}/>
           <Route path='all_banques' element={<AllBanque/>}/>
           <Route path='all_etablissement' element={<AllEtablissement/>}/>
+          <Route path='all_hotel' element={<AllHotel/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
