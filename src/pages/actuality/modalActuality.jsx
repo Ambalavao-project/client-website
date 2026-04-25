@@ -55,7 +55,7 @@ const ModalActuality = ({ isOpen, onClose, actuality }) => {
           )}
 
           {/* DATE & SOURCE */}
-          <div className="text-xs sm:text-sm text-gray-500 mt-4 opacity-0 animate-fade-in-up delay-600">
+          <div className="text-xs sm:text-sm text-gray-500 mt-4 ">
             <span>📅 {actualities?.date || "-"}</span> <br />
             <span>🔗 {actualities?.source || "-"}</span>
           </div>
