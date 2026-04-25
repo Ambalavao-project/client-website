@@ -4,11 +4,13 @@ import ModalHotel from "./modalHotel";
 import UseFetchData from "../../../hooks/useFetchData";
 import { getFullImageUrl } from "../../../utils/imageHelper";
 import { NavLink } from "react-router-dom";
+import useDragScroll from "../../../hooks/useDragScroll";
 
 const Hotel = () => {
     const { data } = UseFetchData("get_all_hotel", 1, 6)
     const [modal, setModal] = useState(false)
     const [selectedHotel, setSelectedHotel] = useState(null)
+    const { scrollRef, dragEvents } = useDragScroll(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -40,9 +42,13 @@ const Hotel = () => {
             </div>
 
             <div className="mt-12 w-4/5 max-w-6xl mx-auto opacity-0 anim-item" data-index={2}>
-                <div className="relative flex overflow-hidden">
+                <div 
+                    ref={scrollRef}
+                    {...dragEvents}
+                    className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none touch-pan-x mask-edges"
+                >
                     <div className="animate-scroll-infinite flex gap-6 py-4">
-                        {[...data, ...data].map((hotel, index) => (
+                        {[...data, ...data, ...data].map((hotel, index) => (
                             <div key={`${hotel.hotel_id}-${index}`} className="w-[280px] shrink-0">
                                 <div className="bg-white  border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
                                     <img

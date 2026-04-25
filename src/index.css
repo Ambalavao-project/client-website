@@ -3,7 +3,71 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Animation fade + slide up */
+  /* Effet de flou aux extrémités */
+  .mask-edges {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+
+  /* --- Animations de scroll (Basées sur 3 copies de data) --- */
+
+  /* GAUCHE */
+  @keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.3333%); }
+  }
+
+  .animate-scroll-infinite {
+    display: flex;
+    width: max-content;
+    animation: scrollLeft 30s linear infinite;
+    will-change: transform;
+  }
+
+  /* DROITE */
+  @keyframes scrollRigth {
+    from { transform: translateX(-33.3333%); }
+    to { transform: translateX(0); }
+  }
+
+  .animate-scroll-rigth {
+    display: flex;
+    width: max-content;
+    animation: scrollRigth 30s linear infinite;
+    will-change: transform;
+  }
+
+  /* PAUSE AU SURVOL (Correction ici : ajout de la virgule) */
+  .animate-scroll-infinite:hover,
+  .animate-scroll-infinite:active,
+  .animate-scroll-rigth:hover,
+  .animate-scroll-rigth:active {
+    animation-play-state: paused;
+  }
+
+  /* --- Utilitaires Scrollbar --- */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* --- Animations d'apparition (Fade) --- */
   @keyframes fade-in-up {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -13,14 +77,6 @@
     animation: fade-in-up 0.8s ease-out forwards;
   }
 
-
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-5 { animation-delay: 0.5s; }
-
-  /* Animation titre */
   @keyframes fade-scale {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -30,37 +86,6 @@
     animation: fade-scale 0.8s ease-out forwards;
   }
 
-  @keyframes scrollLeft {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%) }
-    }
-
-    .animate-scroll-infinite {
-      display: flex;
-      width: max-content;
-      animation: scrollLeft 30s linear infinite;
-    }
-
-    .animate-scroll-infinite:hover {
-      animation-play-state: paused;
-    }
-  
-    @keyframes scrollRigth {
-      from  { transform: translateX(-50%); }
-      to { transform: translateX(0); }
-    }
-
-    .animate-scroll-rigth {
-      display: flex;
-      width: max-content;
-      animation: scrollRigth 30s linear infinite;
-    }
-
-    .animate-scroll-rigth:hover {
-      animation-play-state: paused;
-    }
-
-  /* Masquer par défaut */
+  /* Masquer par défaut pour l'Observer */
   .opacity-0 { opacity: 0; }
-  
 }

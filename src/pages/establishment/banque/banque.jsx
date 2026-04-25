@@ -5,12 +5,14 @@ import { NavLink } from "react-router-dom";
 import Establishment from "../establishment";
 import UseFetchData from "../../../hooks/useFetchData";
 import { getFullImageUrl } from "../../../utils/imageHelper";
+import useDragScroll from "../../../hooks/useDragScroll";
 
 const Banque = () => {
     // Note: data doit contenir assez d'éléments pour le scroll (ou être doublé)
     const { data } = UseFetchData("get_all_bank", 1, 6)
     const [modal, setModal] = useState(false)
     const [selectedBanque, setSelectedBanque] = useState(null)
+    const { scrollRef, dragEvents } = useDragScroll(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -49,11 +51,15 @@ const Banque = () => {
 
             {/* Zone de défilement avec apparition globale */}
             <div className="mt-12 w-4/5 max-w-6xl mx-auto opacity-0 anim-item" data-index={2}>
-                <div className="relative flex overflow-hidden">
+                <div 
+                    ref={scrollRef}
+                    {...dragEvents}
+                    className="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none touch-pan-x mask-edges"
+                >
                     {/* Le ruban qui défile */}
                     <div className="animate-scroll-infinite flex gap-6 py-4">
                         {/* On double la liste pour l'effet infini */}
-                        {[...data, ...data].map((banque, index) => (
+                        {[...data, ...data, ...data].map((banque, index) => (
                             <div key={`${banque.bank_id}-${index}`} className="w-[280px] shrink-0">
                                 {/* LA CARTE : Animation de levée au survol */}
                                 <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col overflow-hidden transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer">
